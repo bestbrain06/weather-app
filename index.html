@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Frontend Mentor | Weather app</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav class="navigation-bar">
+          <a href="#" class="logo">
+            <img src="assets/images/logo.svg" alt="logo" />
+          </a>
+
+          <ul>
+            <li class="dropdown-components">
+              <button
+                class="menu-button"
+                aria-controls="units-menu"
+                aria-expanded="false"
+              >
+                <img src="assets/images/icon-units.svg" alt="units icon" />
+                Units
+                <img
+                  src="assets/images/icon-dropdown.svg"
+                  alt="dropdown icon"
+                />
+              </button>
+
+              <ul id="units-menu" class="units-panel hide">
+                <li>
+                  <button class="dropdown-toggle-button">
+                    Switch to Imperial
+                  </button>
+                </li>
+
+                <li class="unit-dropdown">
+                  <h4>Temperature</h4>
+
+                  <div class="unit-options-container">
+                    <input
+                      class="active"
+                      type="radio"
+                      id="temp-c"
+                      name="temp-unit"
+                      value="celsius"
+                      checked
+                    />
+                    <label for="temp-c" class="unit-selector"
+                      >Celsius (&deg;C)</label
+                    >
+
+                    <input
+                      type="radio"
+                      id="temp-f"
+                      name="temp-unit"
+                      value="fahrenheit"
+                    />
+                    <label for="temp-f" class="unit-selector"
+                      >Fahrenheit (&deg;F)</label
+                    >
+                  </div>
+                </li>
+
+                <div class="divider"></div>
+
+                <li class="unit-dropdown">
+                  <h4>Wind Speed</h4>
+
+                  <div class="unit-options-container">
+                    <input
+                      class="active"
+                      type="radio"
+                      id="wind-kmh"
+                      name="wind-unit"
+                      value="kmh"
+                      checked
+                    />
+                    <label for="wind-kmh" class="unit-selector">km/h</label>
+
+                    <input
+                      type="radio"
+                      id="wind-mph"
+                      name="wind-unit"
+                      value="mph"
+                    />
+                    <label for="wind-mph" class="unit-selector">mph</label>
+                  </div>
+                </li>
+
+                <div class="divider"></div>
+
+                <li class="unit-dropdown">
+                  <h4>Precipitation</h4>
+                  <div class="unit-options-container">
+                    <input
+                      class="active"
+                      type="radio"
+                      id="precip-mm"
+                      name="precip-unit"
+                      value="mm"
+                      checked
+                    />
+                    <label for="precip-mm" class="unit-selector"
+                      >Millimeters (mm)</label
+                    >
+
+                    <input
+                      type="radio"
+                      id="precip-in"
+                      name="precip-unit"
+                      value="in"
+                    />
+                    <label for="precip-in" class="unit-selector"
+                      >Inches (in)</label
+                    >
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <section class="hero-section">
+          <h1>How's the sky looking today?</h1>
+
+          <form class="search-box-container">
+            <div class="search-box">
+              <input
+                class="js-search-input"
+                type="text"
+                placeholder="Search for a place..."
+              />
+              <button class="js-search-button">Search</button>
+            </div>
+
+            <div class="search-suggestions-container hide">
+              <div class="city-option">
+                <span>City Name</span>
+              </div>
+              <div class="city-option">
+                <span>City Name</span>
+              </div>
+              <div class="city-option">
+                <span class="city-name">City Name</span>
+              </div>
+            </div>
+          </form>
+        </section>
+      </header>
+
+      <main class="main-grid-container">
+        <section class="weather-info-container hide">
+          <div class="location-info">
+            <span class="location"></span>
+            <span class="date"></span>
+          </div>
+          <div class="temperature-container">
+            <img src="assets/images/icon-sunny.webp" alt="sun icon" />
+            <span class="temperature-current"></span>
+          </div>
+        </section>
+
+        <section class="weather-info-loading-container">
+          <img src="assets/images/icon-loading.svg" alt="loading icon" />
+          <span>Loading...</span>
+        </section>
+
+        <section class="weather-details-container">
+          <div class="weather-details-card">
+            <span class="weather-details-text">Feels Like</span>
+            <span class="weather-details-number js-apperant-temperature"
+              >–</span
+            >
+          </div>
+          <div class="weather-details-card">
+            <span class="weather-details-text">Humidity</span>
+            <span class="weather-details-number js-humidity">–</span>
+          </div>
+          <div class="weather-details-card">
+            <div class="weather-details-text">Wind</div>
+            <div class="weather-details-number js-wind-speed">–</div>
+          </div>
+          <div class="weather-details-card">
+            <div class="weather-details-text">Precipitation</div>
+            <div class="weather-details-number js-precipitation">–</div>
+          </div>
+        </section>
+
+        <section class="daily-forecast-container">
+          <h3>Daily forecast</h3>
+          <div class="cards-wrapper">
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+            <div class="weather-card"></div>
+          </div>
+        </section>
+
+        <section class="hourly-forecast-container">
+          <header class="hourly-forecast-header">
+            <h3>Hourly forecast</h3>
+
+            <select class="day-selector js-day-selector hide">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednessday">Wednessday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+              <option value="sunday">Sunday</option>
+            </select>
+
+            <div class="place-holder-select">
+              <span>–</span>
+              <img src="assets/images/icon-dropdown.svg" alt="dropdown" />
+            </div>
+          </header>
+
+          <div class="hourly-forecast-card-container">
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+            <div class="hourly-forecast-card"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
